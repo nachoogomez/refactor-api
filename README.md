@@ -1,5 +1,8 @@
 # 🛠️ Refactorización de Código Legado 🚀
 
+## Alumno: Ignacio Gomez
+## Materia: Desarrollo web
+
 ## 📌 Introducción  
 Bienvenido/a a este desafío de refactorización. El objetivo de este proyecto es evaluar **cómo abordarías la mejora de un código legado**, sin ninguna estructura basada en principios como Clean Code.  
 
