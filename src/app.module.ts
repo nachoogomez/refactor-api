@@ -6,10 +6,12 @@ import { ClaimModule } from './claim/claim.module';
 import { NeighborhoodModule } from './neighborhood/neighborhood.module';
 import { CityModule } from './city/city.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { PrismaModule } from './prisma/prisma.module';
 import { join } from 'path';
 
 @Module({
   imports: [
+    PrismaModule,
     AuthModule,
     UsersModule,
     ClaimModule,

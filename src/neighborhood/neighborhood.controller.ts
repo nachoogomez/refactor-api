@@ -1,31 +1,28 @@
-import { Owner } from '@/common/decorators/user.decorator';
+import { Owner } from "@/common/decorators/user.decorator"
 import {
   Body,
   Controller,
   Delete,
   Get,
-  OnModuleDestroy,
-  OnModuleInit,
+  type OnModuleDestroy,
+  type OnModuleInit,
   Param,
   Patch,
   Post,
   Query,
-} from '@nestjs/common';
-import { Prisma, PrismaClient } from '@prisma/client';
-import { CreateNeighborhoodDto } from './create-neighborhood.dto';
-import { NeighborhoodPaginatorDto } from './neighborhood-paginator.dto';
+} from "@nestjs/common"
+import { type Prisma, PrismaClient } from "@prisma/client"
+import type { CreateNeighborhoodDto } from "./create-neighborhood.dto"
+import type { NeighborhoodPaginatorDto } from "./neighborhood-paginator.dto"
 
-@Controller('neighborhood')
-export class NeighborhoodController
-  extends PrismaClient
-  implements OnModuleInit, OnModuleDestroy
-{
+@Controller("neighborhood")
+export class NeighborhoodController extends PrismaClient implements OnModuleInit, OnModuleDestroy {
   onModuleInit() {
-    this.$connect();
+    this.$connect()
   }
 
   onModuleDestroy() {
-    this.$disconnect();
+    this.$disconnect()
   }
 
   @Post()
@@ -42,7 +39,7 @@ export class NeighborhoodController
         },
         city: true,
       },
-    });
+    })
   }
 
   @Get()
@@ -103,11 +100,8 @@ export class NeighborhoodController
     });
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() data: Partial<CreateNeighborhoodDto>,
-  ) {
+  @Patch(":id")
+  update(@Param('id') id: string, @Body() data: Partial<CreateNeighborhoodDto>) {
     return this.neighborhood.update({
       data: {
         ...data,
@@ -119,7 +113,7 @@ export class NeighborhoodController
         },
         city: true,
       },
-    });
+    })
   }
 
   @Delete(':id')
@@ -128,3 +122,4 @@ export class NeighborhoodController
     return this.update(id, { deleted: true, deletedAt: new Date() });
   }
 }
+
